@@ -58,7 +58,7 @@ test('Buscar usuário pelo id', async ({ request }) => {
 
 });
 
-test.only('Buscar todos os usuários administradores', async ({ request }) => {
+test('Buscar todos os usuários administradores', async ({ request }) => {
   //fazendo a requisição
   const getAPIResponse = (await request.get('/usuarios?administrador=true',))
 
@@ -87,6 +87,7 @@ test('Buscar usuário inexistente', async ({ request }) => {
   expect (getAPIResponse.status()).toBe(400)
 
   const getAPIResponseBody = await getAPIResponse.json()
+  console.log(getAPIResponseBody)
 
   //validando resposta - body
   expect(getAPIResponseBody).toHaveProperty("message", "Usuário não encontrado")
